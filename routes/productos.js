@@ -1,14 +1,19 @@
 const express = require('express')
 const router = express.Router()
+const productService = require('../services/productService')
 const db = require('../db')
-// router products
+
 router.get('/', async (req, res) => {
-  const productos = await db.connection
+  /*const productos = await db.connection
     .promise()
     .query('SELECT * FROM productomanufacturado')
     .then(([rows, fields]) => {
       res.json(rows)
-    })
+    })*/
+
+  const productos = await productService.getAll()
+  console.log(productos)
+  res.json(productos)
 })
 
 router.get('/:id', (req, res) => {})
