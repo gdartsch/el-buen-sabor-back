@@ -1,1 +1,5 @@
 GET http://localhost:3000/productos
+
+GET http://localhost:3000/productos/1
+
+POST http://localhost:3000/productos
