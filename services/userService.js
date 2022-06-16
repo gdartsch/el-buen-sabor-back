@@ -18,15 +18,6 @@ const getById = async (id) => {
     })
 }
 
-const getOrdersByUser = async (userId) => {
-  return await db.connection
-    .promise()
-    .query('SELECT * FROM pedido WHERE idUsuario = ?', [userId])
-    .then(([rows, fields]) => {
-      return rows
-    })
-  }
-
 module.exports = {
   getAll,
   getById,
