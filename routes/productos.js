@@ -18,6 +18,8 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', (req, res) => {})
 
+router.get('/:term', (req, res) => {})
+
 router.post('/', (req, res) => {
   res.send('Crear producto')
 })

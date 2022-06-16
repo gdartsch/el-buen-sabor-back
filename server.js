@@ -7,6 +7,12 @@ app.use(express.json())
 const productosRouter = require('./routes/productos')
 app.use('/productos', productosRouter)
 
+const usersRouter = require('./routes/users')
+app.use('/users', usersRouter)
+
+const ordersRouter = require('./routes/orders')
+app.use('/orders', ordersRouter)
+
 app.listen(3000, () => {
   console.log('Server is running on port 3000')
 })
