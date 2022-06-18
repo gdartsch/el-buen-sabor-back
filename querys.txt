@@ -1,0 +1,48 @@
+Productos:
+
+- Creación de productos
+- Update de productos
+- Delete de productos ???
+- Todos los Productos
+- Productos fabricables (verificar cantidad de ingredientes)
+- Productos pedidos para X fecha
+- Productos de X pedido
+
+Usuarios:
+
+- Creación de usuarios
+- Update de usuarios
+- Delete de usuarios ????
+- Todos los usuarios
+- Usuarios activos
+- Usuarios por rol
+- Usuarios registrados en X fecha (o rango de fechas)
+- Usuarios dados de baja
+- Usuarios para X pedido
+- Usuarios con pedidos con estado preparación
+- Usuarios con pedidos cancelados
+- Usuarios con pedidos enviados
+- Usuarios con pedidos por pagar ????
+
+Pedidos:
+
+- Creación de pedidos
+- Update de pedidos
+- Delete de pedidos ???
+- Todos los pedidos
+
+Facturas:
+
+- Creación de facturas
+- Update de facturas
+- Todas las facturas
+- Facturas de X fecha
+- Facturas de X usuario
+- Factura de X pedido
+
+Ingredientes:
+
+- Creación de ingredientes
+- Update de ingredientes
+- Delete de ingredientes ??
+- Todos los ingredientes
