@@ -1,5 +1,10 @@
-GET http://localhost:3000/productos
+POST localhost:3000/productos/insert HTTP/1.1
+content-type: application/json
 
-GET http://localhost:3000/productos/1
-
-POST http://localhost:3000/productos
+{
+    "denominacion": "Producto 2",
+    "imagen": "http://www.google.com",
+    "minutos_estimados_elaboracion": "10",
+    "descripcion": "Descripcion del producto 2",
+    "activo": "1",
+}

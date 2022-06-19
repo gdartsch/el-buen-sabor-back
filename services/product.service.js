@@ -3,10 +3,24 @@ const db = require('../db')
 const getAll = async () => {
   return await db.connection
     .promise()
-    .query('SELECT * FROM productomanufacturado')
+    .query('SELECT * FROM producto_manufacturado')
     .then(([rows, fields]) => {
       return rows
     })
+}
+
+const insertProducto = async (producto) => {
+  return await db.connection.promise().query(
+    `INSERT INTO producto_manufacturado (denominacion, imagen, minutos_estimados_elaboracion, descripcion, activo)
+      VALUES (?, ?, ?, ?, ?)`,
+    [
+      producto.denominacion,
+      producto.imagen,
+      producto.minutos_estimados_elaboracion,
+      producto.descripcion,
+      producto.activo,
+    ]
+  )
 }
 
 const getById = async (id) => {
@@ -45,4 +59,5 @@ const getByRubro = async (rubro) => {
 
 module.exports = {
   getAll,
+  insertProducto,
 }

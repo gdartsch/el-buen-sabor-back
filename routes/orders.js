@@ -1,6 +1,6 @@
 const express = require('express')
 const router = express.Router()
-const orderService = require('../services/orderService')
+const orderService = require('../services/order.service')
 const db = require('../db')
 
 router.get('/', async (req, res) => {
