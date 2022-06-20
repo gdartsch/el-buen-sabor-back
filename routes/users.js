@@ -14,7 +14,7 @@ router.get('/:id', async (req, res) => {
   res.json(usuario)
 })
 
-router.post('/insert', async (req, res) => {
+router.post('/', async (req, res) => {
   const usuario = req.body
   const address = req.body.address
   const rol = req.body.rol

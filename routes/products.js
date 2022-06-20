@@ -19,7 +19,7 @@ router.get('/:id', async (req, res) => {
 router.get('/:term', (req, res) => {})
 
 // Insert producto POST
-router.post('/insert', async (req, res) => {
+router.post('/', async (req, res) => {
   const producto = req.body
   const result = await productService.insertProducto(producto)
   if (res.statusCode === 200) {
