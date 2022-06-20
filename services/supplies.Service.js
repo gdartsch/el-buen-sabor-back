@@ -33,15 +33,11 @@ const insertArticulo = async (articulo) => {
   )
 }
 
-const updateStock = async (id,datos) => {
+const updateStock = async (datos) => {
   return await db.connection.promise().query(
     `UPDATE articulo_insumo SET StockActual=?, CostoUnidad=?
      WHERE ID_ARTICULO_INSUMO = ?`,
-    [
-      datos.stockActual,
-      datos.costoUnidad,
-      id
-    ]
+    [datos.stockActual, datos.costoUnidad]
   )
 }
 
