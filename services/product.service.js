@@ -27,9 +27,9 @@ const getStock = async (id) => {
   return await db.connection
     .promise()
     .query(
-      'select truncate( (select min(a.StockActual/r.CantidadArticulo) from articulo_insumo a '+
-      'inner join producto__articulo r on a.ID_ARTICULO_INSUMO= r.FK_ID_ARTICULO_INSUMO '+
-      'and r.FK_ID_PRODUCTO_MANUFACTURADO=?), 0) as MaximaProduccion',
+      'select truncate( (select min(a.StockActual/r.CantidadArticulo) from articulo_insumo a ' +
+        'inner join producto__articulo r on a.ID_ARTICULO_INSUMO= r.FK_ID_ARTICULO_INSUMO ' +
+        'and r.FK_ID_PRODUCTO_MANUFACTURADO=?), 0) as MaximaProduccion',
       [id]
     )
     .then(([rows, fields]) => {
@@ -41,9 +41,9 @@ const getIngredientes = async (id) => {
   return await db.connection
     .promise()
     .query(
-      'select a.Denominacion, r.CantidadArticulo from articulo_insumo a'+
-      ' inner join producto__articulo r on r.FK_ID_PRODUCTO_MANUFACTURADO = ?'+
-      ' and r.FK_ID_ARTICULO_INSUMO = a.ID_ARTICULO_INSUMO',
+      'select a.Denominacion, r.CantidadArticulo from articulo_insumo a' +
+        ' inner join producto__articulo r on r.FK_ID_PRODUCTO_MANUFACTURADO = ?' +
+        ' and r.FK_ID_ARTICULO_INSUMO = a.ID_ARTICULO_INSUMO',
       [id]
     )
     .then(([rows, fields]) => {
@@ -55,13 +55,13 @@ const getCosto = async (id) => {
   return await db.connection
     .promise()
     .query(
-      'SELECT p.denominacion as Producto , sum(r.CantidadArticulo * a.CostoUnidad) as CostoProducto '+
-      'from producto__articulo r '+ 
-      'inner join articulo_insumo a '+
-      'inner join producto_manufacturado p '+
-      'on r.FK_ID_ARTICULO_INSUMO=a.ID_ARTICULO_INSUMO '+
-      'and r.FK_ID_PRODUCTO_MANUFACTURADO = p.ID_PRODUCTO_MANUFACTURADO '+
-      'where p.ID_PRODUCTO_MANUFACTURADO=?',
+      'SELECT p.denominacion as Producto , sum(r.CantidadArticulo * a.CostoUnidad) as CostoProducto ' +
+        'from producto__articulo r ' +
+        'inner join articulo_insumo a ' +
+        'inner join producto_manufacturado p ' +
+        'on r.FK_ID_ARTICULO_INSUMO=a.ID_ARTICULO_INSUMO ' +
+        'and r.FK_ID_PRODUCTO_MANUFACTURADO = p.ID_PRODUCTO_MANUFACTURADO ' +
+        'where p.ID_PRODUCTO_MANUFACTURADO=?',
       [id]
     )
     .then(([rows, fields]) => {
@@ -123,5 +123,5 @@ module.exports = {
   insertProducto,
   getStock,
   getIngredientes,
-  getCosto
+  getCosto,
 }

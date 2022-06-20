@@ -35,6 +35,23 @@ const insertUser = async (user, address, rol) => {
   )
 }
 
+const updateUser = async (user) => {
+  await db.connection.promise().query(
+    `UPDATE usuario SET nombres=?, apellidos=?, telefono=?, email=?, password=?, activo=?, fecha_modificacion=?
+      WHERE id_usuario = ?`,
+    [
+      user.nombres,
+      user.apellidos,
+      user.telefono,
+      user.email,
+      user.password,
+      user.activo,
+      user.fecha_modificacion,
+      user.id_usuario,
+    ]
+  )
+}
+
 const getById = async (id) => {
   return await db.connection
     .promise()

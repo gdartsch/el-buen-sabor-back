@@ -16,5 +16,4 @@ router.get('/:id', async (req, res) => {
   res.json(domicilio)
 })
 
-
 module.exports = router
