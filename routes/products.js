@@ -41,7 +41,7 @@ router.put('/update', async (req,res)=> {
   } 
 })
 
-router.get('/stock/:id', async (req,res) => {
+router.get('/:id/stock', async (req,res) => {
   const id = req.params.id
   const result = await productService.getStock(id)
   if(res.statusCode === 200) {
@@ -56,6 +56,16 @@ router.get('/:id/ingredientes', async (req,res) => {
     res.json(result)
   } 
 })
+
+router.post('/:id/ingredientes', async (req,res) => {
+  const id = req.params.id
+  const datos = req.body
+  const result = await productService.setIngredientes(id,datos)
+  if(res.statusCode === 200) {
+    res.json(message='ingredientes incorporados con exito')
+  } 
+})
+
 
 router.get('/:id/costo', async (req,res) => {
   const id = req.params.id

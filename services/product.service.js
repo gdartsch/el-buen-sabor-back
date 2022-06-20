@@ -41,9 +41,9 @@ const getIngredientes = async (id) => {
   return await db.connection
     .promise()
     .query(
-      'select a.Denominacion, r.CantidadArticulo from articulo_insumo a'+
-      ' inner join producto__articulo r on r.FK_ID_PRODUCTO_MANUFACTURADO = ?'+
-      ' and r.FK_ID_ARTICULO_INSUMO = a.ID_ARTICULO_INSUMO',
+      'select a.Denominacion, r.CantidadArticulo, u.denominacion as UnidadDeMedida, a.StockActual as Stock from articulo_insumo a'+
+      ' inner join producto__articulo r inner join unidad_de_medida u on r.FK_ID_PRODUCTO_MANUFACTURADO = ?'+
+      ' and r.FK_ID_ARTICULO_INSUMO = a.ID_ARTICULO_INSUMO and u.ID_UNIDAD_DE_MEDIDA=a.FK_ID_UNIDAD_DE_MEDIDA',
       [id]
     )
     .then(([rows, fields]) => {
@@ -51,11 +51,22 @@ const getIngredientes = async (id) => {
     })
 }
 
+const setIngredientes = async (id,ingredientes) => {
+  ingredientes.forEach(async ingrediente => {
+    return await db.connection
+    .promise()
+    .query(
+      'insert into producto__articulo values (null,?,?,?)',
+      [id,ingrediente.id,ingrediente.cantidad]
+    )  
+  });
+}
+
 const getCosto = async (id) => {
   return await db.connection
     .promise()
     .query(
-      'SELECT p.denominacion as Producto , sum(r.CantidadArticulo * a.CostoUnidad) as CostoProducto '+
+      'SELECT p.denominacion as Producto , sum(r.cantidadArticulo * a.CostoUnidad) as CostoProducto '+
       'from producto__articulo r '+ 
       'inner join articulo_insumo a '+
       'inner join producto_manufacturado p '+
@@ -65,7 +76,7 @@ const getCosto = async (id) => {
       [id]
     )
     .then(([rows, fields]) => {
-      return rows[0]
+      return rows[0]  
     })
 }
 
@@ -123,5 +134,6 @@ module.exports = {
   insertProducto,
   getStock,
   getIngredientes,
+  setIngredientes,
   getCosto
 }
