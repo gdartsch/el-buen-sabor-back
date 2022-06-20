@@ -9,21 +9,27 @@ const getAll = async () => {
     })
 }
 
-const insertDomicilio = async (domicilio) => {
+const insertAddress = async (address) => {
+  await db.connection.promise().query(
+    `INSERT INTO domicilio (calle, numero, localidad, geolocalizacion, activo)
+                        VALUES (?, ?, ?, ?, ?)`,
+    [
+      address.calle,
+      address.numero,
+      address.localidad,
+      address.geolocalizacion,
+      address.activo,
+    ]
+  )
   return await db.connection
     .promise()
-    .query(
-      'INSERT INTO domicilio (calle, numero, localidad, geolocalizacion, activo) VALUES (?, ?, ?, ?, ?)',
-      [
-        domicilio.calle,
-        domicilio.numero,
-        domicilio.localidad,
-        domicilio.geolocalizacion,
-        domicilio.activo,
-      ]
-    )
+    .query('SELECT LAST_INSERT_ID() AS id')
+    .then(([rows, fields]) => {
+      return rows[0].id
+    })
 }
 
 module.exports = {
   getAll,
+  insertAddress,
 }

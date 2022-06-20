@@ -1,10 +1,19 @@
-POST localhost:3000/productos/insert HTTP/1.1
-content-type: application/json
-
 {
-    "denominacion": "Producto 2",
-    "imagen": "http://www.google.com",
-    "minutos_estimados_elaboracion": "10",
-    "descripcion": "Descripcion del producto 2",
-    "activo": "1",
+    "user": {
+        "nombres": "Diego Agustín",
+        "apellidos": "Zabala",
+        "telefono": "2615553947",
+        "email": "diego@test.com",
+        "password": "123456",
+        "address": {
+            "calle": "Salta",
+            "numero": 456,
+            "localidad": "Godoy Cruz",
+            "geolocalizacion": "65465 46546",
+            "activo": 1
+        },
+        "activo": 1,
+        "fecha_modificacion": "19/08/2020 10:59:32",
+        "fk_id_rol_usuario": 1
+    }
 }
