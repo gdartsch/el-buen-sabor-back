@@ -9,7 +9,7 @@ router.get('/', async (req, res) => {
 
 router.get('/:id', async (req, res) => {
   const id = req.params.id
-  const artiuclo = await suppliesService.getById(id)
+  const articulo = await suppliesService.getById(id)
   res.json(articulo)
 })
 
@@ -26,10 +26,11 @@ router.post('/insert', async (req, res) => {
 
 //Para la gestion de stock y costos el administrador ingresara directamente
 //los valores vigentes.
-router.put('/edit', async (req, res) => {
+router.put('/:id/edit', async (req,res)=> {
+  const id = req.params.id
   const datos = req.body
-  const result = await suppliesService.updateStock(datos)
-  if (res.statusCode === 200) {
+  const result = await suppliesService.updateStock(id,datos)
+  if(res.statusCode === 200) {
     res.json({
       message: 'Articulo editado con exito',
       datos,
