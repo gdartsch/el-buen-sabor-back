@@ -27,7 +27,7 @@ const getById = async (id) => {
   return await db.connection
     .promise()
     .query(
-      'SELECT * FROM productomanufacturado WHERE idProductoManufacturado = ?',
+      'SELECT * FROM producto_manufacturado WHERE ID_PRODUCTO_MANUFACTURADO = ?',
       [id]
     )
     .then(([rows, fields]) => {
@@ -59,5 +59,6 @@ const getByRubro = async (rubro) => {
 
 module.exports = {
   getAll,
+  getById,
   insertProducto,
 }

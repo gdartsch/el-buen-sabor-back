@@ -9,6 +9,16 @@ const getAll = async () => {
     })
 }
 
+const getById = async (id) => {
+  return await db.connection
+    .promise()
+    .query('SELECT * FROM domicilio WHERE ID_DOMICILIO = ?', [id])
+    .then(([rows, fields]) => {
+      return rows[0]
+    })
+}
+
+
 const insertAddress = async (address) => {
   await db.connection.promise().query(
     `INSERT INTO domicilio (calle, numero, localidad, geolocalizacion, activo)
@@ -32,4 +42,5 @@ const insertAddress = async (address) => {
 module.exports = {
   getAll,
   insertAddress,
+  getById
 }

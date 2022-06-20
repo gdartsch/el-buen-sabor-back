@@ -7,10 +7,14 @@ const bodyParser = require('body-parser')
 
 router.get('/', async (req, res) => {
   const productos = await productService.getAll()
-  res.json()
+  res.json(productos)
 })
 
-router.get('/:id', (req, res) => {})
+router.get('/:id', async (req, res) => {
+  const id = req.params.id
+  const producto = await productService.getById(id)
+  res.json(producto)
+})
 
 router.get('/:term', (req, res) => {})
 
