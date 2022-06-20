@@ -40,7 +40,7 @@ const updateStock = async (datos) => {
     [
       datos.stockActual,
       datos.costoUnidad,
-      datos.id
+      
     ]
   )
 }

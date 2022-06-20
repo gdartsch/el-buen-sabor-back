@@ -25,4 +25,10 @@ router.get('/user/:id', async (req, res) => {
   res.json(ordenes)
 })
 
+router.get('/date/:fecha', async (req, res)=>{
+  const fecha = req.params.fecha
+  const ordenes = await orderService.getByDate(fecha)
+  res.json(ordenes)
+})
+
 module.exports = router

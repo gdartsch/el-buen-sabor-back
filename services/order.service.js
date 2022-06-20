@@ -12,7 +12,7 @@ const getAll = async () => {
 const getById = async (id) => {
   return await db.connection
     .promise()
-    .query('SELECT * FROM pedido WHERE idPedido = ?', [id])
+    .query('SELECT * FROM pedido WHERE ID_PEDIDO = ?', [id])
     .then(([rows, fields]) => {
       return rows[0]
     })
@@ -27,8 +27,18 @@ const getByUser = async (userId) => {
     })
 }
 
+const getByDate = async (fecha) => {
+  return await db.connection
+    .promise()
+    .query('SELECT * FROM pedido WHERE Fecha = ?', [fecha])
+    .then(([rows, fields]) => {
+      return rows
+    })
+}
+
 module.exports = {
   getAll,
   getById,
   getByUser,
+  getByDate
 }

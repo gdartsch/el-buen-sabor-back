@@ -30,6 +30,41 @@ router.post('/', async (req, res) => {
   }
 })
 
+router.put('/update', async (req,res)=> {
+  const datos = req.body
+  const result = await productService.updateProduct(datos)
+  if(res.statusCode === 200) {
+    res.json({
+      message: 'Producto editado con exito',
+      datos
+    })
+  } 
+})
+
+router.get('/stock/:id', async (req,res) => {
+  const id = req.params.id
+  const result = await productService.getStock(id)
+  if(res.statusCode === 200) {
+    res.json(result)
+  } 
+})
+
+router.get('/:id/ingredientes', async (req,res) => {
+  const id = req.params.id
+  const result = await productService.getIngredientes(id)
+  if(res.statusCode === 200) {
+    res.json(result)
+  } 
+})
+
+router.get('/:id/costo', async (req,res) => {
+  const id = req.params.id
+  const result = await productService.getCosto(id)
+  if(res.statusCode === 200) {
+    res.json(result)
+  } 
+})
+
 router.put('/:id', (req, res) => {
   res.send('Actualizar producto ' + req.params.id)
 })

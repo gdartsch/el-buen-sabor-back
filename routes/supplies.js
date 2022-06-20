@@ -24,6 +24,8 @@ router.post('/insert', async (req, res) => {
   }
 })
 
+//Para la gestion de stock y costos el administrador ingresara directamente
+//los valores vigentes.
 router.put('/edit', async (req,res)=> {
   const datos = req.body
   const result = await suppliesService.updateStock(datos)
