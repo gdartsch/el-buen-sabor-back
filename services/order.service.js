@@ -21,7 +21,7 @@ const getById = async (id) => {
 const getByUser = async (userId) => {
   return await db.connection
     .promise()
-    .query('SELECT * FROM pedido WHERE idUsuario = ?', [userId])
+    .query('SELECT * FROM pedido WHERE FK_ID_USUARIO = ?', [userId])
     .then(([rows, fields]) => {
       return rows
     })
