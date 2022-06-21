@@ -19,6 +19,9 @@ app.use('/direcciones', addressesRouter)
 const suppliesRouter = require('./routes/supplies')
 app.use('/articulos', suppliesRouter)
 
+const invoiceRouter = require('./routes/invoices')
+app.use('/facturas', invoiceRouter)
+
 app.listen(3000, () => {
   console.log('Server is running on port 3000')
 })
