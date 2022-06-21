@@ -19,30 +19,23 @@ router.post('/insert', async (req, res) => {
   if (res.statusCode === 200) {
     res.json({
       message: 'Articulo insertado correctamente',
-      articulo
+      articulo,
     })
   }
 })
 
 //Para la gestion de stock y costos el administrador ingresara directamente
 //los valores vigentes.
-<<<<<<< HEAD
-router.put('/:id/edit', async (req,res)=> {
+router.put('/:id/edit', async (req, res) => {
   const id = req.params.id
   const datos = req.body
-  const result = await suppliesService.updateStock(id,datos)
-=======
-router.put('/edit', async (req,res)=> {
-  const datos = req.body
-  const result = await suppliesService.updateStock(datos)
->>>>>>> parent of dce3462 (Formateo de codigo)
-  if(res.statusCode === 200) {
+  const result = await suppliesService.updateStock(id, datos)
+  if (res.statusCode === 200) {
     res.json({
       message: 'Articulo editado con exito',
-      datos
+      datos,
     })
-  } 
+  }
 })
-
 
 module.exports = router

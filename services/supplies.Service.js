@@ -28,27 +28,22 @@ const insertArticulo = async (articulo) => {
       articulo.stockActual,
       articulo.stockMinimo,
       articulo.costoUnidad,
-      articulo.activo
+      articulo.activo,
     ]
   )
 }
 
-const updateStock = async (id,datos) => {
+const updateStock = async (id, datos) => {
   return await db.connection.promise().query(
     `UPDATE articulo_insumo SET StockActual=?, CostoUnidad=?
      WHERE ID_ARTICULO_INSUMO = ?`,
-    [
-      datos.stockActual,
-      datos.costoUnidad,
-      id
-    ]
+    [datos.stockActual, datos.costoUnidad, id]
   )
 }
 
 module.exports = {
-    getAll,
-    getById,
-    insertArticulo,
-    updateStock
-  }
-  
+  getAll,
+  getById,
+  insertArticulo,
+  updateStock,
+}
