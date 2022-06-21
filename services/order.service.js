@@ -13,13 +13,13 @@ const insertOrder = async (pedido) => {
   await db.connection
     .promise()
     .query(
-      `INSERT INTO pedido (fecha, numero, fk_id_estado, hora_estimada_fin, es_delivery, total, fk_id_domicilio, fk_id_usuario, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO pedido (fecha, numero, fk_id_estado, hora_estimada_fin, EsDelivery, total, fk_id_domicilio, fk_id_usuario, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         pedido.fecha,
         pedido.numero,
         pedido.fk_id_estado,
         pedido.hora_estimada_fin,
-        pedido.es_delivery,
+        pedido.EsDelivery,
         pedido.total,
         pedido.fk_id_domicilio,
         pedido.fk_id_usuario,

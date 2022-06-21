@@ -148,12 +148,12 @@ const getByRubro = async (rubro) => {
 
 const updateProduct = async (datos) => {
   return await db.connection.promise().query(
-    `UPDATE INTO producto denominacion=?, imagen=?, minutos_estimados_elaboracion=?, descripcion=?, activo=?
+    `UPDATE INTO producto denominacion=?, imagen=?, MinutosEstimadosElaboracion=?, descripcion=?, activo=?
       VALUES (?, ?, ?, ?, ?)`,
     [
       producto.denominacion,
       producto.imagen,
-      producto.minutos_estimados_elaboracion,
+      producto.MinutosEstimadosElaboracion,
       producto.descripcion,
       producto.activo,
     ]
