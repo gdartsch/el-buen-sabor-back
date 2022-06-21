@@ -28,7 +28,7 @@ const insertArticulo = async (articulo) => {
       articulo.stockActual,
       articulo.stockMinimo,
       articulo.costoUnidad,
-      articulo.activo,
+      articulo.activo
     ]
   )
 }
@@ -46,8 +46,9 @@ const updateStock = async (id,datos) => {
 }
 
 module.exports = {
-  getAll,
-  getById,
-  insertArticulo,
-  updateStock,
-}
+    getAll,
+    getById,
+    insertArticulo,
+    updateStock
+  }
+  

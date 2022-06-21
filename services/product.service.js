@@ -27,9 +27,9 @@ const getStock = async (id) => {
   return await db.connection
     .promise()
     .query(
-      'select truncate( (select min(a.StockActual/r.CantidadArticulo) from articulo_insumo a ' +
-        'inner join producto__articulo r on a.ID_ARTICULO_INSUMO= r.FK_ID_ARTICULO_INSUMO ' +
-        'and r.FK_ID_PRODUCTO_MANUFACTURADO=?), 0) as MaximaProduccion',
+      'select truncate( (select min(a.StockActual/r.CantidadArticulo) from articulo_insumo a '+
+      'inner join producto__articulo r on a.ID_ARTICULO_INSUMO= r.FK_ID_ARTICULO_INSUMO '+
+      'and r.FK_ID_PRODUCTO_MANUFACTURADO=?), 0) as MaximaProduccion',
       [id]
     )
     .then(([rows, fields]) => {

@@ -7,10 +7,14 @@ const bodyParser = require('body-parser')
 
 router.get('/', async (req, res) => {
   const productos = await productService.getAll()
-  res.json()
+  res.json(productos)
 })
 
-router.get('/:id', (req, res) => {})
+router.get('/:id', async (req, res) => {
+  const id = req.params.id
+  const producto = await productService.getById(id)
+  res.json(producto)
+})
 
 router.get('/:term', (req, res) => {})
 
@@ -18,11 +22,47 @@ router.get('/:term', (req, res) => {})
 router.post('/', async (req, res) => {
   const producto = req.body
   const result = await productService.insertProducto(producto)
-  if (res.statusCode === 200)
+  if (res.statusCode === 200) {
     res.json({
       message: 'Producto insertado correctamente',
       producto,
     })
+  }
+})
+
+router.put('/update', async (req,res)=> {
+  const datos = req.body
+  const result = await productService.updateProduct(datos)
+  if(res.statusCode === 200) {
+    res.json({
+      message: 'Producto editado con exito',
+      datos
+    })
+  } 
+})
+
+router.get('/stock/:id', async (req,res) => {
+  const id = req.params.id
+  const result = await productService.getStock(id)
+  if(res.statusCode === 200) {
+    res.json(result)
+  } 
+})
+
+router.get('/:id/ingredientes', async (req,res) => {
+  const id = req.params.id
+  const result = await productService.getIngredientes(id)
+  if(res.statusCode === 200) {
+    res.json(result)
+  } 
+})
+
+router.get('/:id/costo', async (req,res) => {
+  const id = req.params.id
+  const result = await productService.getCosto(id)
+  if(res.statusCode === 200) {
+    res.json(result)
+  } 
 })
 
 router.put('/update', async (req, res) => {
