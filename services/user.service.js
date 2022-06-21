@@ -1,6 +1,5 @@
 const db = require('../db')
 const addressService = require('./address.service')
-const bcrypt = require('bcrypt')
 
 const getAll = async () => {
   return await db.connection
@@ -27,7 +26,7 @@ const insertUser = async (user, address, rol) => {
       user.apellidos,
       user.telefono,
       user.email,
-      bcrypt.hashSync(user.password, 10),
+      user.password,
       addressId,
       user.activo,
       user.fecha_modificacion,

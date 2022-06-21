@@ -18,6 +18,7 @@ const getById = async (id) => {
     })
 }
 
+
 const insertAddress = async (address) => {
   await db.connection.promise().query(
     `INSERT INTO domicilio (calle, numero, localidad, geolocalizacion, activo)
@@ -41,5 +42,5 @@ const insertAddress = async (address) => {
 module.exports = {
   getAll,
   insertAddress,
-  getById,
+  getById
 }
