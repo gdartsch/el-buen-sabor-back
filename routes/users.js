@@ -14,6 +14,11 @@ router.get('/:id', async (req, res) => {
   res.json(usuario)
 })
 
+router.get('/rol/:rol', async (req, res) => {
+  const usuarios = await userService.groupUsersByRol(req.params.rol)
+  res.json(usuarios)
+})
+
 router.post('/', async (req, res) => {
   const usuario = req.body
   const address = req.body.address

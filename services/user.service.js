@@ -36,6 +36,20 @@ const insertUser = async (user, address, rol) => {
   )
 }
 
+const groupUsersByRol = async () => {
+  return await db.connection
+    .promise()
+    .query(
+      `SELECT r.denominacion, COUNT(u.id_usuario) AS cantidad
+      FROM usuario u
+      INNER JOIN rol_usuario r ON u.fk_id_rol_usuario = r.id_rol_usuario
+      GROUP BY r.denominacion`
+    )
+    .then(([rows, fields]) => {
+      return rows
+    })
+}
+
 const getById = async (id) => {
   return await db.connection
     .promise()
@@ -49,4 +63,5 @@ module.exports = {
   getAll,
   getById,
   insertUser,
+  groupUsersByRol,
 }

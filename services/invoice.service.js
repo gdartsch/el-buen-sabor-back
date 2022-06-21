@@ -24,13 +24,13 @@ const insertInvoice = async (invoice, pedido) => {
   return db.connection
     .promise()
     .query(
-      `INSERT INTO factura (fecha, numero, monto_descuento, forma_de_pago, total_venta, total_costo, fk_id_pedido, activa) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO factura (fecha, numero, monto_descuento, forma_de_pago, TotalVenta, total_costo, fk_id_pedido, activa) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         invoice.fecha,
         invoice.numero,
         invoice.monto_descuento,
         invoice.forma_de_pago,
-        invoice.total_venta,
+        invoice.TotalVenta,
         invoice.total_costo,
         orderId,
         invoice.activa,
