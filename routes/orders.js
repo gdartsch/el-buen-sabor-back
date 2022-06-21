@@ -11,6 +11,11 @@ router.get('/', async (req, res) => {
 router.post('/', async (req, res) => {
   const orden = req.body
   const result = await orderService.insertOrder(orden)
+  if (res.statusCode === 200) {
+    res.json({
+      message: 'Pedido ingresado correctamente',
+    })
+  }
 })
 
 router.get('/:id', async (req, res) => {
