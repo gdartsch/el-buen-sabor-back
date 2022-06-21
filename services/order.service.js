@@ -82,6 +82,7 @@ const insertOrder = async (datos) => {
     
   setProductos(idpedido,detalles)
 
+  return idpedido
 }
 
 

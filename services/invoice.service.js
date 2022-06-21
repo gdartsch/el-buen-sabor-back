@@ -24,13 +24,13 @@ const insertInvoice = async (invoice, pedido) => {
   return db.connection
     .promise()
     .query(
-      `INSERT INTO factura (fecha, numero, monto_descuento, forma_de_pago, TotalVenta, total_costo, fk_id_pedido, activa) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+      `INSERT INTO factura (fecha, numero, montodescuento, fk_id_tipo_pago, TotalVenta, totalcosto, fk_id_pedido, activo) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         invoice.fecha,
         invoice.numero,
         invoice.monto_descuento,
         invoice.forma_de_pago,
-        invoice.TotalVenta,
+        invoice.total_venta,
         invoice.total_costo,
         orderId,
         invoice.activa,
@@ -41,8 +41,21 @@ const insertInvoice = async (invoice, pedido) => {
     })
 }
 
+const getGananciasFechas = async (fechaDesde, fechaHasta) => {
+  return db.connection
+    .promise()
+    .query(
+      `select sum(TotalVenta) from factura f where f.fecha between ? and ?`,
+      [
+        fechaDesde,
+        fechaHasta
+      ]
+    )
+}
+
 module.exports = {
   getAll,
   getByNumber,
   insertInvoice,
+  getGananciasFechas,
 }
